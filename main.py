@@ -1,5 +1,5 @@
 import discord
-
+import os
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -16,4 +16,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('NzczMTg5MjE0ODExNTg2NTYy.X6FmkQ.EJN4Xca3E9CS4gcFqzp9_83c4kE')
+client.run(os.environ.get('bottoken'))
