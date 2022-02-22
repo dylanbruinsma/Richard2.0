@@ -6,8 +6,7 @@ from discord.ext import commands
 client = commands.Bot(commands.when_mentioned_or('pp '))
 
 client.load_extension('cogs.Tools')
-client.load_extension('cogs.Voice')
-client.load_extension('cogs.Fun')
+
 
 
 @client.event
