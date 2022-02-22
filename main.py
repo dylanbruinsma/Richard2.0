@@ -1,9 +1,13 @@
 import discord
 import os
+import datetime
+
 
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
+        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="to you",
+                                                               start=datetime.datetime.utcfromtimestamp(0)))
 
     async def on_message(self, message):
         # don't respond to ourselves
