@@ -23,15 +23,9 @@ class Admintools(commands.Cog):
     async def show(self, ctx, amount):
         response = 'Hallo'
         image_url = 'https://vignette.wikia.nocookie.net/lekkerspelen/images/c/c6/Richard.jpg/revision/latest/scale-to-width-down/220?cb=20181203192730&path-prefix=nl'
-        img_data = requests.get(image_url).content
-        with open('picture.jpg', 'wb') as handler:
-            handler.write(img_data)
-        await ctx.send(response)
 
-        for x in range(int(amount)):
+        await ctx.send(image_url)
 
-            await ctx.send(file=discord.File('picture.jpg'))
-        os.remove('picture.jpg')
 
     @commands.command()
     @commands.is_owner()
