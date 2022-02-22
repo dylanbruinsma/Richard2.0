@@ -1,23 +1,19 @@
 import discord
 import os
 import datetime
+from discord.ext import commands
+
+client = commands.Bot(commands.when_mentioned_or('pp '))
+
+client.load_extension('cogs.Tools')
+client.load_extension('cogs.Voice')
+client.load_extension('cogs.Fun')
 
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged on as', self.user)
-        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="you",
-                                                               start=datetime.datetime.utcfromtimestamp(0)))
-
-    async def on_message(self, message):
-        # don't respond to ourselves
-        if message.author == self.user:
-            return
-
-        if message.content == 'ping':
-            user = await client.fetch_user(211121425589862400)
-            await user.send("pong")
+@client.event
+async def on_ready():
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="you",
+                                                           start=datetime.datetime.utcfromtimestamp(0)))
 
 
-client = MyClient()
 client.run(os.environ.get('bottoken'))
