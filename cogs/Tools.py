@@ -8,21 +8,18 @@ class Admintools(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-
-
-
     @commands.command()
-    @commands.has_role(399290576253747201)
+    @commands.is_owner()
     async def load(self, ctx, extension):
         self.client.load_extension(f'cogs.{extension}')
 
     @commands.command()
-    @commands.has_role(399290576253747201)
+    @commands.is_owner()
     async def unload(self, ctx, extension):
         self.client.unload_extension(f'cogs.{extension}')
 
     @commands.command()
-    @commands.has_role(399290576253747201)
+    @commands.is_owner()
     async def show(self, ctx, amount):
         response = 'Hallo'
         image_url = 'https://vignette.wikia.nocookie.net/lekkerspelen/images/c/c6/Richard.jpg/revision/latest/scale-to-width-down/220?cb=20181203192730&path-prefix=nl'
@@ -37,7 +34,7 @@ class Admintools(commands.Cog):
         os.remove('picture.jpg')
 
     @commands.command()
-    @commands.has_role(399290576253747201)
+    @commands.is_owner()
     async def clear(self, ctx, amount):
         if amount == "all":
             await ctx.channel.purge(limit=999999999999)
